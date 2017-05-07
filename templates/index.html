@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+
+		<!-- basic styles -->
+
+		<link href="/static/assets/css/bootstrap.min.css" rel="stylesheet" />
+		<link rel="stylesheet" href="/static/assets/css/font-awesome.min.css" />
+
+		<!--[if IE 7]>
+		  <link rel="stylesheet" href="/static/assets/css/font-awesome-ie7.min.css" />
+		<![endif]-->
+
+		<!-- page specific plugin styles -->
+
+		<link rel="stylesheet" href="/static/assets/css/fullcalendar.css" />
+
+		<!-- fonts -->
+
+		<!--<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,300" />-->
+
+		<!-- ace styles -->
+
+		<link rel="stylesheet" href="/static/assets/css/ace.min.css" />
+		<link rel="stylesheet" href="/static/assets/css/ace-rtl.min.css" />
+		<link rel="stylesheet" href="/static/assets/css/ace-skins.min.css" />
+
+		<!--[if lte IE 8]>
+		  <link rel="stylesheet" href="/static/assets/css/ace-ie.min.css" />
+		<![endif]-->
+
+		<!-- inline styles related to this page -->
+
+		<!-- ace settings handler -->
+
+		<script src="/static/assets/js/ace-extra.min.js"></script>
+
+		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+
+		<!--[if lt IE 9]>
+		<script src="/static/assets/js/html5shiv.js"></script>
+		<script src="/static/assets/js/respond.min.js"></script>
+		<![endif]-->
+        <!--<script type="text/javascript" src="/static/assets/js/mycookies.js"></script>-->
+		<link rel="stylesheet" href="/static/mycss/loading.css" />
+
+		<script src="/static/myjs/jquery.min.js"></script>
+		<script src="/static/myjs/ajax-answer-question.js"></script>
+	</head>
+
+	<body>
+		<div class="navbar navbar-default" id="navbar">
+			<script type="text/javascript">
+				try{ace.settings.check('navbar' , 'fixed')}catch(e){}
+			</script>
+		</div>
+
+		<div class="main-container" id="main-container">
+			<script type="text/javascript">
+				try{ace.settings.check('main-container' , 'fixed')}catch(e){}
+			</script>
+
+			<div class="main-container-inner">
+				<a class="menu-toggler" id="menu-toggler" href="#">
+					<span class="menu-text"></span>
+				</a>
+
+				<div class="sidebar" id="sidebar">
+					<script type="text/javascript">
+						try{ace.settings.check('sidebar' , 'fixed')}catch(e){}
+					</script>
+
+					<div class="sidebar-shortcuts" id="sidebar-shortcuts">
+						<div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
+							<button class="btn btn-success">
+								<i class="icon-signal"></i>
+							</button>
+
+							<button class="btn btn-info">
+								<i class="icon-pencil"></i>
+							</button>
+
+							<button class="btn btn-warning">
+								<i class="icon-group"></i>
+							</button>
+
+							<button class="btn btn-danger">
+								<i class="icon-cogs"></i>
+							</button>
+						</div>
+
+						<div class="sidebar-shortcuts-mini" id="sidebar-shortcuts-mini">
+							<span class="btn btn-success"></span>
+
+							<span class="btn btn-info"></span>
+
+							<span class="btn btn-warning"></span>
+
+							<span class="btn btn-danger"></span>
+						</div>
+					</div><!-- #sidebar-shortcuts -->
+
+					<ul class="nav nav-list">
+						<li class="active">
+							<a href="index.html">
+								<i class="icon-dashboard"></i>
+								<span class="menu-text"> 控制台 </span>
+							</a>
+						</li>
+
+					</ul><!-- /.nav-list -->
+
+					<div class="sidebar-collapse" id="sidebar-collapse">
+						<i class="icon-double-angle-left" data-icon1="icon-double-angle-left" data-icon2="icon-double-angle-right"></i>
+					</div>
+
+					<script type="text/javascript">
+						try{ace.settings.check('sidebar' , 'collapsed')}catch(e){}
+					</script>
+				</div>
+
+				<div class="main-content">
+					<div class="breadcrumbs" id="breadcrumbs">
+						<!--<script type="text/javascript">-->
+							<!--try{ace.settings.check('breadcrumbs' , 'fixed')}catch(e){}-->
+						<!--</script>-->
+
+						<ul class="breadcrumb">
+							<li>
+								<i class="icon-home home-icon"></i>
+								<a href="#">首页</a>
+							</li>
+							<!--<li class="active">Calendar</li>-->
+						</ul><!-- .breadcrumb -->
+
+						<div class="nav-search" id="nav-search">
+							<form class="form-search">
+								<span class="input-icon">
+									<input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="off" />
+									<i class="icon-search nav-search-icon"></i>
+								</span>
+							</form>
+						</div><!-- #nav-search -->
+					</div>
+
+					<div class="page-content">
+						<div class="page-header">
+							<h1>
+								熊猫
+								<small>
+									<i class="icon-double-angle-right"></i>
+									点击开始输入语音
+								</small>
+							</h1>
+						</div><!-- /.page-header -->
+
+						<div class="row">
+							<div class="col-xs-12">
+								<!-- PAGE CONTENT BEGINS -->
+
+								<div class="row">
+                                    <div class="col-sm-3">
+
+                                        <li href="#" class="btn btn-app btn-success" onclick="startRecording()">
+                                            录音
+										</li>
+                                        <li href="#" class="btn btn-app btn-success" onclick="stopRecording()">
+                                            停止
+										</li>
+                                        <!--<input onclick="playRecording()" type="button" value="播放" />-->
+                                        <!--<input onclick="uploadAudio()" type="button" value="提交" />-->
+                                    </div>
+
+									<div id = "audioplay" class="col-sm-3">		</div>
+								</div>
+								<div class="row" style="margin-top:20px">
+                                    <div class="col-sm-8,col-md-6">
+										输入问题：<input id="inputquestion" type="text" name="question" style="width:30%" placeholder="大熊猫喜欢吃什么？">
+										<a id="submitQuestion" type="button" class="btn btn-default btn-sm">确认</a>
+
+
+
+                                        <!--<input onclick="playRecording()" type="button" value="播放" />-->
+                                        <!--<input onclick="uploadAudio()" type="button" value="提交" />-->
+                                    </div>
+								</div>
+								<div class="row" style="margin-top:20px">
+									<div id="csshub-loading">
+										<div class="c1"></div>
+    									<div class="c2"></div>
+										<div class="c3"></div>
+										<div class="c4"></div>
+									</div>
+									<div id="answer"></div>
+								</div>
+
+
+								<!-- PAGE CONTENT ENDS -->
+							</div><!-- /.col -->
+						</div><!-- /.row -->
+					</div><!-- /.page-content -->
+				</div><!-- /.main-content -->
+
+			</div><!-- /.main-container-inner -->
+
+			<a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
+				<i class="icon-double-angle-up icon-only bigger-110"></i>
+			</a>
+		</div><!-- /.main-container -->
+
+		<!-- basic scripts -->
+
+		<!--[if !IE]> -->
+
+		<!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>-->
+
+		<!-- <![endif]-->
+
+		<!--[if IE]>
+        <!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>-->
+        <![endif]-->
+
+		<!--[if !IE]> -->
+
+		<!--<script type="text/javascript">-->
+			<!--window.jQuery || document.write("<script src='assets/js/jquery-2.0.3.min.js'>"+"<"+"/script>");-->
+		<!--</script>-->
+
+		<!-- <![endif]-->
+
+		<!--[if IE]>
+<!--<script type="text/javascript">-->
+ <!--window.jQuery || document.write("<script src='assets/js/jquery-1.10.2.min.js'>"+"<"+"/script>");-->
+<!--</script>-->
+
+
+<![endif]-->
+
+		<!--<script type="text/javascript">-->
+			<!--if("ontouchend" in document) document.write("<script src='assets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");-->
+		<!--</script>-->
+        <script src="http://apps.bdimg.com/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script src="http://www.ziqiangxuetang.com/media/django/csrf.js"></script>
+		<script src="/static/assets/js/bootstrap.min.js"></script>
+		<script src="/static/assets/js/typeahead-bs2.min.js"></script>
+
+		<!-- page specific plugin scripts -->
+
+		<!--<script src="/static/assets/js/jquery-ui-1.10.3.custom.min.js"></script>-->
+		<!--<script src="/static/assets/js/jquery.ui.touch-punch.min.js"></script>-->
+		<script src="/static/assets/js/bootbox.min.js"></script>
+        <!--<script src="/static/assets/js/recorder.js"></script>-->
+        <!--<script src="/static/assets/js/recorderWorker.js"></script>-->
+        <script src="/static/assets/js/HZRecorder.js"></script>
+
+
+		<!-- ace scripts -->
+
+		<!--<script src="/static/assets/js/ace-elements.min.js"></script>-->
+		<!--<script src="/static/assets/js/ace.min.js"></script>-->
+
+		<!-- inline scripts related to this page -->
+
+		<script >
+            var recorder;
+
+        var audio = document.querySelector('audio');
+
+        function startRecording() {
+            HZRecorder.get(function (rec) {
+                recorder = rec;
+                recorder.start();
+                $('#ap_add').remove()
+            });
+        }
+
+        function stopRecording() {
+            recorder.stop();
+            uploadAudio();
+            $('#audioplay').html("<div class='page-header'><h1>Loading。。。</h1></div>");
+        }
+
+//        function playRecording() {
+//            recorder.play(audio);
+//        }
+
+        function uploadAudio() {
+            recorder.upload("/generate_answer/", function (state, e) {
+                switch (state) {
+                    case 'uploading':
+                        //var percentComplete = Math.round(e.loaded * 100 / e.total) + '%';
+                        break;
+                    case 'ok':
+                        //alert(e.target.responseText);
+//                        alert("上传成功");
+                        break;
+                    case 'error':
+                        alert("上传失败");
+                        break;
+                    case 'cancel':
+                        alert("上传被取消");
+                        break;
+                }
+            });
+        }
+
+		</script>
+
+</body>
+</html>
