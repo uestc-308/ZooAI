@@ -9,13 +9,18 @@ $(document).ready(function(){
             $("#csshub-loading").show();
             $("#answer").hide();
             $.ajax({method:"GET",url:"/ajax_answer/",data:{"question":question},dataType:"json",success:function(data){
-                        console.log("data:"+data.answer);
 						$("#csshub-loading").hide();
 						if(data.length > 0){  //返回的数据不能为空
 						    $.each(data,function(index,obj){
 						        if(index == 0){
-						           // 返回的是unicode字符编码，使用eval()将unicode转换
+
+						            /*
+						           // 1. 返回的是unicode字符编码，使用eval()将unicode转换
 						            var answer = "<p>回答：" + eval(obj.content) +"</p>"
+                                    $("#answer").html(answer);
+                                    */
+						            //2. 返回的是utf-8字符编码，不用转换
+						            var answer = "<p>回答：" + obj.content +"</p>"
                                     $("#answer").html(answer);
 						        }
 						    })
